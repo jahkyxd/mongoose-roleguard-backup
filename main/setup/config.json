@@ -1,0 +1,16 @@
+{
+    "Global": {
+        "owners": ["618444525727383592"],
+        "GuildID": "835518990351990854",
+        "Jails": "",
+        "Boosters": "",
+        "CloseAllPerms": [],
+        "Whitelist": []
+    },
+    "Database": {
+        "token": "Nzk5MzI2NDU2NDcwOTYyMjM2.YAB8xQ.VJOLF299PQ949qze0IWzuKngfgk",
+        "log": "903591363478708247",
+        "mongoURL": "mongodb+srv://ceki:ceki@cluster0.lgxki.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+        "prefix": "!"
+    }
+}
