@@ -1,6 +1,5 @@
 const { MessageEmbed } = require("discord.js");
 const config = require("./setup/config.json");
-const Database = require("../models/roles");
 const moment = require("moment");
 moment.locale("tr")
 
@@ -11,4 +10,22 @@ module.exports = async (client) => {
         client.channels.cache.get(config.Database.log).send("@everyone", logEmbed).catch(() => { })
     }
 
+    client.backup = () => {
+        const Database = require("../models/roles");
+        Database.deleteMany({});
+        client.guilds.cache.get(config.Global.GuildID).roles.cache.filter(e => !e.managed).forEach(async role => {
+            new Database({
+                guildID: client.guilds.cache.get(config.Global.GuildID).id,
+                role: role.id,
+                name: role.name,
+                color: role.hexColor,
+                hoist: role.hoist,
+                position: role.rawPosition,
+                permler: role.permissions,
+                mentionable: role.mentionable,
+                members: role.members.map(e => e.id)
+            }).save()
+        })
+        console.log(`${moment(Date.now()).format("LLL")} Tarihinde başarıyla rollerin backup alma işlemi gerçekleştirildi!`)
+    }
 }
