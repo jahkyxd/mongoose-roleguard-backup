@@ -15,6 +15,10 @@ class main {
             client.user.setPresence({ activity: { name: "Jahky Prof Database", type: "LISTENING" }, status: "dnd" })
             client.backup()
         })
+        
+        setInterval(() => {
+  client.backup()
+}, 1000 * 60 * 60 * 15);
 
         require("./database-functions")(client)
 
